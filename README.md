@@ -20,3 +20,6 @@ Will launch Field "inside" this project. All project.clj `dependencies` will be 
 Options:
 
     :field-arguments ["-stereo" "1" "-opengl32" "1"] ; add arguments to Field's command line
+
+
+Comming soon: Syntax Highlighting (borrowed from arthuredelstein/clooj) and completion (borrowed from alexander-yakushev/compliment).
