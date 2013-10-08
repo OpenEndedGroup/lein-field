@@ -9,13 +9,13 @@
   ([project doc]
      (let [cp (classpath/get-classpath-string project)
            fr (env/env :field)
-           defaults {"-useGit" 1
-                     "-extendedJars" cp
-                     "-versioning.dir" (format "%s/field" (project :root))}
-           project-field-args (apply hash-map (project :field-arguments []))
-           sheet-arg (when doc {"-field.scratch"
+           defaults {:useGit 1
+                     :extendedJars cp
+                     :versioning.dir (format "%s/field" (project :root))}
+           project-field-args (project :field-arguments nil)
+           sheet-arg (when doc {:field.scratch
                                 (if (.endsWith doc ".field") doc (str doc ".field"))})
-           all-args (flatten (map (fn [[k v]] [k (str v)])
+           all-args (flatten (map (fn [[k v]] [(str "-" (name k)) (str v)])
                                   (merge defaults project-field-args sheet-arg)))
            proc (apply sh/proc "/bin/bash" fr all-args)
            f (future (sh/stream-to-out proc :out))]
