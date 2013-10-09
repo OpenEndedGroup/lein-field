@@ -24,6 +24,8 @@ Optional command-line argument to specify the sheet name:
 or
 
         lein field foo.field
+        
+Then add `:plugins [[lein-field "0.1.0-SNAPSHOT"]]` to your project.clj.
 
 Options:
 
